@@ -1,0 +1,242 @@
+// @charset "utf-8";
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+menu,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section {
+  display: block;
+}
+
+/* HTML5 hidden-attribute fix for newer browsers */
+*[hidden] {
+  display: none;
+}
+
+body {
+  line-height: 1;
+}
+
+menu,
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+// 基本颜色
+$primary: #4865D2 !default;
+$red: #FD7474 !default;
+$orange: #f36919 !default;
+$yellow: #ffc400 !default;
+$green: #06C296 !default;
+$light-blue: #418ee7 !default;
+$gray: #555555 !default;
+$light-gray: #999999 !default;
+// 常用颜色
+$line: #e5e5e5 !default;
+$icon: #888888 !default;
+$disable: #999999 !default;
+$hover: rgba($primary, 0.1) !default;
+$select: rgba($primary, 0.1) !default;
+// 
+$radius: 2px !default;
+
+// 字体颜色
+// 使用font-red,font-orange
+@each $colorlist,
+$color in (red, $red),
+(orange, $orange),
+(yellow, $yellow),
+(green, $green),
+(blue, $primary) {
+  .font-#{$colorlist} {
+    color: $color+ !important;
+  }
+}
+
+// 字体大小
+//使用font6，font7
+@for $i from 6 through 20 {
+  .font#{$i*2} {
+    font-size: $i*2+px+ !important;
+  }
+}
+
+// 字体位置
+// 使用font-left,font-right,font-center,
+@each $align in left,
+center,
+right {
+  .font-#{$align} {
+    text-align: $align+ !important;
+  }
+}
+
+// 常用宽度
+.ui-w {
+  width: 100% !important;
+}
+
+//使用ui-w4，ui-w5
+@for $i from 4 through 180 {
+  .ui-w#{$i*5} {
+    width: $i*5+px+ !important;
+  }
+}
+
+// 常用margin
+//使用ui-mt1，ui-mb1
+@for $i from 1 through 6 {
+  .ui-mt#{$i*5} {
+    margin-top: $i*5+px+ !important;
+  }
+
+  .ui-mb#{$i*5} {
+    margin-bottom: $i*5+px+ !important;
+  }
+
+  .ui-mr#{$i*5} {
+    margin-right: $i*5+px+ !important;
+  }
+
+  .ui-ml#{$i*5} {
+    margin-left: $i*5+px+ !important;
+  }
+}
+
+// 常用padding
+//使用ui-pt1，ui-pb1
+@for $i from 1 through 6 {
+  .ui-pt#{$i*5} {
+    padding-top: $i*5+px+ !important;
+  }
+
+  .ui-pb#{$i*5} {
+    padding-bottom: $i*5+px+ !important;
+  }
+
+  .ui-pr#{$i*5} {
+    padding-right: $i*5+px+ !important;
+  }
+
+  .ui-pl#{$i*5} {
+    padding-left: $i*5+px+ !important;
+  }
+}

@@ -1,0 +1,180 @@
+// 登录
+.login {
+    width: 100%;
+    height: 100%;
+    background: #151F3F;
+
+    &-form {
+        margin: 0 auto;
+        width: 420px;
+        height: 300px;
+        background: #979797;
+        border: 1px solid #979797;
+        box-sizing: border-box;
+        border-radius: 8px;
+        position: relative;
+        top: 50%;
+        transform: translate(0, -50%);
+
+        h2 {
+            font-size: 18px;
+            color: #fff;
+            text-align: center;
+            padding: 25px 0;
+        }
+
+        &>div {
+            padding: 0 30px;
+
+            .el-form-item__error {
+                color: #F5A623;
+            }
+        }
+    }
+
+    &-register {
+        .el-form-item__content {
+            .el-checkbox {
+                color: #fff;
+                margin-right: 10px;
+            }
+
+            .is-checked {
+                .el-checkbox__inner {
+                    background-color: #22CDA6;
+                    border-color: #22CDA6;
+                }
+
+                .el-checkbox__label {
+                    color: #fff;
+                }
+            }
+
+            &>span {
+                cursor: pointer;
+                @include float(right);
+                font-size: 14px;
+                color: #ccc;
+
+                &:nth-of-type(2) {
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+
+    &-btn {
+        margin-bottom: 8px;
+        position: relative;
+
+        span {
+            cursor: pointer;
+            display: block;
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            border-radius: 4px;
+            background: #22CDA6;
+            color: #fff;
+            font-size: 18px;
+        }
+
+        .loadEffect {
+            width: 100%;
+            height:40px;
+            
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0,0,0,0.4);
+            div {
+                width: 40px;
+                height: 40px;
+                margin: 0 auto;
+                position: relative;
+                span {
+                    display: inline-block;
+                    width: 4px;
+                    height: 4px;
+                    border-radius: 50%;
+                    background: #fff;
+                    position: absolute;
+                    animation: load 1.04s ease infinite;
+
+                    &:nth-child(1) {
+                        left: 12px;
+                        top: 18px;
+                        animation-delay: 0.13s;
+                    }
+
+                    &:nth-child(2) {
+
+                        left: 18px;
+                        top: 12px;
+                        animation-delay: 0.39s;
+                    }
+
+                    &:nth-child(3) {
+                        right: 12px;
+                        top: 18px;
+                        animation-delay: 0.65s;
+                    }
+
+                    &:nth-child(4) {
+                        bottom: 12px;
+                        left: 18px;
+                        animation-delay: 0.91s;
+                    }
+                }
+            }
+        }
+    }
+
+    &-shadow {
+        position: fixed;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background: transparent;
+        color: #fff;
+
+        .role {
+            &-warp {
+                margin: 0 auto;
+                width: 420px;
+                height: 300px;
+                background: #979797;
+                border: 1px solid #979797;
+                box-sizing: border-box;
+                border-radius: 8px;
+                position: relative;
+                top: 50%;
+                transform: translate(0, -50%);
+            }
+
+            &-tit {
+                text-align: center;
+                padding: 25px 0;
+            }
+
+            &-lists {
+                li {
+                    padding: 10px 30px;
+                    text-align: center;
+                }
+            }
+        }
+    }
+
+    @keyframes load {
+        0% {
+            opacity: 1;
+        }
+
+        100% {
+            opacity: 0.2;
+        }
+    }
+}
