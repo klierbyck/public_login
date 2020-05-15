@@ -36,7 +36,9 @@
                 <div class="role-tit">选择您要进入的系统</div>
                 <ul class="role-lists">
                     <li v-for="item in sysList" :key="item.id">
-                        <a :href="'/'+item.systemCode">{{item.systemName}}</a>
+                        <a
+                            :href="(Cookies.get('login_invite')&&item.systemCode=='datavp')?Cookies.get('login_invite'):'/'+item.systemCode"
+                        >{{item.systemName}}</a>
                     </li>
                 </ul>
             </div>
@@ -45,6 +47,7 @@
 </template>
 <script>
     import api from "@/api/index.js";
+    import Cookies from "js-cookie";
     import { JSEncrypt } from "jsencrypt";
     export default {
         data() {
@@ -109,22 +112,66 @@
                                             .post(api.getIndexData)
                                             .then(res => {
                                                 this.loading = false;
-                                                console.log("getIndexData", res);
+                                                //    this.$http.get(api.loginOut).then(res => {})
                                                 if (res.code == 0) {
-                                                    window.localStorage.setItem(
-                                                        "userinfo",
+                                                    // window.localStorage.setItem(
+                                                    //     "userinfo",
+                                                    //     JSON.stringify(res)
+                                                    // );
+                                                    console.log(
+                                                        "getIndexData",
                                                         res
                                                     );
+                                                    Cookies.set(
+                                                        "userId",
+                                                        res.userId,
+                                                        { expires: 7 }
+                                                    );
+                                                    Cookies.set(
+                                                        "userName",
+                                                        res.userName,
+                                                        { expires: 7 }
+                                                    );
+                                                    Cookies.set(
+                                                        "organId",
+                                                        res.identify.organId,
+                                                        { expires: 7 }
+                                                    );
+                                                    // Cookies.set(
+                                                    //     "login_invite",
+                                                    //     "login_invite",
+                                                    //     { expires: 7 }
+                                                    // );
                                                     if (
                                                         res.sysList.length &&
                                                         res.sysList.length == 1
                                                     ) {
-                                                        // window.location.href =
-                                                        //     "http://localhost:8081/dashboard/project";
-                                                        window.location.href =
-                                                            "/" +
-                                                            res.sysList[0]
-                                                                .systemCode;
+                                                        if (
+                                                            Cookies.get(
+                                                                "login_invite"
+                                                            )
+                                                        ) {
+                                                            let url = Cookies.get(
+                                                                "login_invite"
+                                                            );
+                                                            window.location.href = url;
+                                                        } else {
+                                                            if (
+                                                                process.env
+                                                                    .NODE_ENV ==
+                                                                "development"
+                                                            ) {
+                                                                window.location.href =
+                                                                    "http://localhost:8081/" +
+                                                                    res.sysList[0]
+                                                                        .systemCode;
+                                                            } else {
+                                                                window.location.href =
+                                                                    "/" +
+                                                                    res.sysList[0]
+                                                                        .systemCode;
+                                                            }
+                                                        }
                                                     } else {
                                                         this.sysList = res.sysList;
                                                         this.showBox = true;
@@ -139,7 +186,7 @@
                                     } else {
                                         this.loading = false;
                                         this.$message({
-                                            message: res.statusText,
+                                            message: res.msg,
                                             center: true
                                         });
                                     }

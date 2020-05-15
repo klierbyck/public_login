@@ -151,7 +151,13 @@ module.exports = {
                     //重写路径 比如'/api/aaa/ccc'重写为'/aaa/ccc'
                     "^/tydl": "/"
                 }
-            }
+            },
+			"/men": {
+				changeOrigin: true,
+				target: "http://10.1.231.13:9001",
+				// target: "http://10.0.204.111:9001"
+				pathRewrite: { "/men": "/men" }
+			}
         }
     },
 

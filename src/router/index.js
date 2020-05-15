@@ -18,7 +18,7 @@ Vue.use(Router);
 
 export const appRouter = [
     {
-        path: "/", //*号表示匹配任意内容
+        path: "*",
         redirect: "/login"
     },
     {
@@ -27,10 +27,6 @@ export const appRouter = [
         component: resolve => {
             require(["@/views/login/login.vue"], resolve);
         }
-    },
-    {
-        path: "*", //*号表示匹配任意内容
-        redirect: "/login"
     }
 ];
 

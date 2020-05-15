@@ -38,7 +38,6 @@ axios.interceptors.response.use(
 let cancelCallback = {};
 
 function getAxios(method, url, params, baseURL, cancelStr) {
-    console.log("method, url, params, baseURL, cancelStr", method, url, params, baseURL, cancelStr);
     let property = {
         method: method,
         url: url,
