@@ -8,7 +8,12 @@
                         <el-input v-model="formData.name" placeholder="用户名/邮箱/手机号"></el-input>
                     </el-form-item>
                     <el-form-item prop="password">
-                        <el-input v-model="formData.password" placeholder="请输入密码" type="password"></el-input>
+                        <el-input
+                            v-model="formData.password"
+                            placeholder="请输入密码"
+                            type="password"
+                            @change="submitFormData('forms')"
+                        ></el-input>
                     </el-form-item>
                     <el-form-item align="center" class="login-btn">
                         <span @click="submitFormData('forms')">登 录</span>

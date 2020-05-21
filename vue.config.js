@@ -154,7 +154,7 @@ module.exports = {
             },
 			"/men": {
 				changeOrigin: true,
-				// target: "http://10.1.231.13:9001",
+				// target: "http://10.1.231.13:9003/men",
 				target: "http://10.0.204.110:9003/men",
 				pathRewrite: { "/men": "" }
 			}
